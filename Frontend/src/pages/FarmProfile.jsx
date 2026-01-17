@@ -1,122 +1,159 @@
 import React from 'react';
-import { User, FileText, Upload, Trash2, Download, Edit2, ChevronRight } from 'lucide-react';
+import { 
+  User, 
+  FileText, 
+  Upload, 
+  Trash2, 
+  Download, 
+  Edit2, 
+  ChevronRight,
+  LayoutDashboard,
+  ShoppingCart,
+  CloudSun,
+  LogOut
+} from 'lucide-react';
 
 const FarmProfile = () => {
   return (
-    <div className="min-h-screen w-full bg-[#F8FBF9] font-sans text-gray-900">
+    /* THE FIX: min-h-screen and w-full without horizontal overflow */
+    <div className="min-h-screen w-full bg-[#F8FBF9] font-sans text-gray-900 overflow-x-hidden">
       
-      {/* FULL WIDTH HEADER */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-100 px-10 py-5 flex items-center justify-between w-full">
-        <div className="flex items-center gap-2">
-          <div className="w-9 h-9 bg-[#22C55E] rounded-lg flex items-center justify-center shadow-sm">
-            <span className="text-white font-bold">🌱</span>
+      {/* 1. FULL WIDTH HEADER - Touches both edges */}
+      <header className="sticky top-0 z-50 bg-white border-b border-gray-100 px-6 lg:px-12 py-5 flex items-center justify-between w-full shadow-sm">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-[#22C55E] rounded-xl flex items-center justify-center shadow-lg shadow-green-100">
+            <span className="text-white text-xl font-bold">🌱</span>
           </div>
-          <span className="text-2xl font-bold tracking-tight text-gray-900">AgriSense</span>
+          <span className="text-2xl font-black tracking-tighter text-gray-900">AgriSense</span>
         </div>
         
-        <nav className="hidden lg:flex items-center gap-12 text-sm font-black uppercase tracking-widest">
-          <a href="#" className="text-gray-400 hover:text-[#22C55E] transition-colors">Dashboard</a>
-          <a href="#" className="text-[#22C55E] border-b-2 border-[#22C55E] pb-1">My Farm</a>
-          <a href="#" className="text-gray-400 hover:text-[#22C55E] transition-colors">Marketplace</a>
-          <a href="#" className="text-gray-400 hover:text-[#22C55E] transition-colors">Weather</a>
+        <nav className="hidden xl:flex items-center gap-12 text-sm font-black uppercase tracking-widest">
+          <a href="#" className="text-gray-400 hover:text-[#22C55E] transition-all flex items-center gap-2">
+            <LayoutDashboard size={18} /> Dashboard
+          </a>
+          <a href="#" className="text-[#22C55E] border-b-4 border-[#22C55E] pb-1 flex items-center gap-2">
+            My Farm
+          </a>
+          <a href="#" className="text-gray-400 hover:text-[#22C55E] transition-all flex items-center gap-2">
+            <ShoppingCart size={18} /> Marketplace
+          </a>
+          <a href="#" className="text-gray-400 hover:text-[#22C55E] transition-all flex items-center gap-2">
+            <CloudSun size={18} /> Weather
+          </a>
         </nav>
 
-        <div className="w-11 h-11 rounded-full overflow-hidden border-2 border-[#22C55E] shadow-sm">
-          <img src="https://i.imgur.com/8Km9tLL.png" alt="Profile" className="object-cover w-full h-full" />
+        <div className="flex items-center gap-6">
+          <button className="text-gray-400 hover:text-red-500 transition-colors">
+            <LogOut size={22} />
+          </button>
+          <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#22C55E] shadow-md cursor-pointer hover:scale-105 transition-transform">
+            <img src="https://i.imgur.com/8Km9tLL.png" alt="Profile" className="object-cover w-full h-full" />
+          </div>
         </div>
       </header>
 
-      {/* MAIN CONTENT AREA - Responsive sizing for laptop */}
-      <main className="w-full max-w-[1600px] mx-auto p-8 lg:p-12">
+      {/* 2. MAIN CONTENT - Set to w-full to prevent right-side grey gaps */}
+      <main className="w-full px-6 lg:px-12 py-10">
         
+        {/* TITLE SECTION */}
         <div className="mb-12">
-          <h1 className="text-6xl font-black text-gray-900 mb-3 tracking-tight">My Farm Profile</h1>
-          <p className="text-[#22C55E] font-bold text-xl">Manage your personal details and farm records.</p>
+          <h1 className="text-5xl lg:text-7xl font-black text-gray-900 mb-4 tracking-tighter">My Farm Profile</h1>
+          <p className="text-[#22C55E] font-extrabold text-xl lg:text-2xl uppercase tracking-tight">
+            Manage your personal details and farm records.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-10 mb-10">
+        {/* 3. TOP GRID - Personal & Land Records */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
           
-          {/* PERSONAL DETAILS - Bright & Visible */}
-          <div className="bg-white p-10 rounded-[48px] shadow-sm border border-gray-100 flex flex-col justify-between">
-            <div className="flex items-center gap-3 mb-10 text-[#22C55E]">
-              <User size={28} strokeWidth={3} />
-              <h2 className="text-2xl font-black text-gray-900">Personal Details</h2>
+          {/* PERSONAL DETAILS CARD */}
+          <div className="bg-white p-8 lg:p-12 rounded-[50px] shadow-sm border border-gray-100 h-full">
+            <div className="flex items-center gap-4 mb-12 text-[#22C55E]">
+              <div className="p-3 bg-green-50 rounded-2xl">
+                <User size={32} strokeWidth={3} />
+              </div>
+              <h2 className="text-3xl font-black text-gray-900">Personal Details</h2>
             </div>
 
             <div className="flex flex-col md:flex-row gap-12 items-center lg:items-start">
-              <div className="flex flex-col items-center gap-5">
-                <div className="w-48 h-48 rounded-full overflow-hidden border-[8px] border-green-50 shadow-xl">
+              <div className="flex flex-col items-center gap-6">
+                <div className="w-56 h-56 rounded-full overflow-hidden border-[12px] border-[#F0FDF4] shadow-2xl transform hover:rotate-3 transition-transform">
                    <img src="https://i.imgur.com/8Km9tLL.png" alt="Rajesh" className="w-full h-full object-cover" />
                 </div>
-                <button className="text-sm font-black text-[#22C55E] hover:underline uppercase tracking-tighter">Change Photo</button>
+                <button className="text-sm font-black text-[#22C55E] hover:underline uppercase tracking-widest bg-green-50 px-6 py-2 rounded-full">
+                  Change Photo
+                </button>
               </div>
 
               <div className="flex-1 w-full space-y-8">
                 <div className="space-y-3">
-                  <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Full Name</label>
-                  <div className="relative">
-                    <input type="text" defaultValue="Rajesh Kumar" className="w-full bg-gray-50 border-none rounded-3xl py-5 px-6 font-bold text-lg outline-none focus:ring-2 focus:ring-[#22C55E]/20" />
-                    <Edit2 size={20} className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-300" />
+                  <label className="text-xs font-black text-gray-400 uppercase tracking-widest ml-2">Full Name</label>
+                  <div className="relative group">
+                    <input type="text" defaultValue="Rajesh Kumar" className="w-full bg-gray-50 border-2 border-transparent focus:border-[#22C55E] rounded-3xl py-6 px-8 font-bold text-xl outline-none transition-all group-hover:bg-gray-100" />
+                    <Edit2 size={22} className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-300 group-hover:text-[#22C55E] transition-colors" />
                   </div>
                 </div>
                 <div className="space-y-3">
-                  <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Contact Number</label>
-                  <div className="relative">
-                    <input type="text" defaultValue="+91 98765 43210" className="w-full bg-gray-50 border-none rounded-3xl py-5 px-6 font-bold text-lg outline-none focus:ring-2 focus:ring-[#22C55E]/20" />
-                    <Edit2 size={20} className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-300" />
+                  <label className="text-xs font-black text-gray-400 uppercase tracking-widest ml-2">Contact Number</label>
+                  <div className="relative group">
+                    <input type="text" defaultValue="+91 98765 43210" className="w-full bg-gray-50 border-2 border-transparent focus:border-[#22C55E] rounded-3xl py-6 px-8 font-bold text-xl outline-none transition-all group-hover:bg-gray-100" />
+                    <Edit2 size={22} className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-300 group-hover:text-[#22C55E] transition-colors" />
                   </div>
                 </div>
-                {/* HIGH VISIBILITY BUTTON */}
-                <button className="w-full py-5 bg-[#22C55E] text-white text-xl font-black rounded-3xl hover:bg-[#16a34a] shadow-2xl shadow-green-100 transition-all transform active:scale-95">
+                
+                {/* SAVE BUTTON - Optimized for visibility */}
+                <button className="w-full py-6 bg-[#22C55E] text-white text-2xl font-black rounded-3xl hover:bg-[#16a34a] shadow-xl shadow-green-100 transition-all transform active:scale-95 flex items-center justify-center gap-3">
                   Save Changes
                 </button>
               </div>
             </div>
           </div>
 
-          {/* LAND RECORDS - Clean Laptop Layout */}
-          <div className="bg-white p-10 rounded-[48px] shadow-sm border border-gray-100 flex flex-col">
-            <div className="flex items-center gap-3 mb-10 text-[#22C55E]">
-              <FileText size={28} strokeWidth={3} />
-              <h2 className="text-2xl font-black text-gray-900">Land Records</h2>
-            </div>
-
-            <div className="border-3 border-dashed border-[#22C55E]/30 bg-[#F0FDF4]/40 rounded-[40px] p-12 mb-8 flex flex-col items-center justify-center group cursor-pointer hover:bg-[#F0FDF4] transition-all">
-              <div className="w-16 h-16 bg-[#22C55E] rounded-2xl flex items-center justify-center mb-5 shadow-lg shadow-green-200 group-hover:scale-110 transition-transform">
-                <Upload className="text-white" size={32} />
+          {/* LAND RECORDS CARD */}
+          <div className="bg-white p-8 lg:p-12 rounded-[50px] shadow-sm border border-gray-100 flex flex-col h-full">
+            <div className="flex items-center gap-4 mb-12 text-[#22C55E]">
+              <div className="p-3 bg-green-50 rounded-2xl">
+                <FileText size={32} strokeWidth={3} />
               </div>
-              <p className="font-black text-2xl text-gray-900 mb-1">Upload Land Document</p>
-              <p className="text-sm text-gray-400 font-bold">PDF, JPEG, or PNG supported</p>
+              <h2 className="text-3xl font-black text-gray-900">Land Records</h2>
             </div>
 
-            <div className="space-y-4 overflow-y-auto max-h-[300px] pr-2">
+            <div className="border-4 border-dashed border-[#22C55E]/20 bg-[#F0FDF4]/30 rounded-[40px] p-12 lg:p-16 mb-8 flex flex-col items-center justify-center group cursor-pointer hover:bg-[#F0FDF4] hover:border-[#22C55E]/50 transition-all">
+              <div className="w-20 h-20 bg-[#22C55E] rounded-3xl flex items-center justify-center mb-6 shadow-xl shadow-green-200 group-hover:scale-110 transition-transform">
+                <Upload className="text-white" size={40} />
+              </div>
+              <p className="font-black text-3xl text-gray-900 mb-2">Upload Land Document</p>
+              <p className="text-lg text-gray-400 font-bold uppercase tracking-tighter">Drag and drop or Click to browse</p>
+            </div>
+
+            <div className="space-y-4 overflow-y-auto max-h-[400px] pr-2 custom-scrollbar">
                <FileItem name="Land_Deed_Registry_2020.pdf" detail="2.4 MB • 12 Oct 2023" />
                <FileItem name="Soil_Test_Report_Plot_A.jpg" detail="1.8 MB • 05 Jan 2024" />
             </div>
           </div>
         </div>
 
-        {/* 3. PRODUCTION HISTORY - Wide Table */}
-        <div className="bg-white p-12 rounded-[48px] shadow-sm border border-gray-100">
-          <div className="flex items-center justify-between mb-12">
-            <div className="flex items-center gap-4 text-[#22C55E]">
-              <span className="text-4xl">🚜</span>
-              <h2 className="text-3xl font-black text-gray-900">Production History</h2>
+        {/* 4. PRODUCTION HISTORY - Full Wide View */}
+        <div className="bg-white p-8 lg:p-12 rounded-[50px] shadow-sm border border-gray-100">
+          <div className="flex flex-col lg:flex-row items-center justify-between mb-12 gap-6">
+            <div className="flex items-center gap-5 text-[#22C55E]">
+              <div className="w-16 h-16 bg-orange-100 rounded-3xl flex items-center justify-center text-4xl shadow-sm">🚜</div>
+              <h2 className="text-4xl font-black text-gray-900 tracking-tight">Production History</h2>
             </div>
-            <button className="flex items-center gap-3 px-8 py-4 bg-gray-50 hover:bg-gray-100 text-gray-700 rounded-2xl font-black text-sm transition-all border border-gray-100 shadow-sm">
-              <Download size={22} />
+            <button className="flex items-center gap-4 px-10 py-5 bg-gray-900 text-white rounded-2xl font-black text-lg hover:bg-black transition-all shadow-xl">
+              <Download size={24} />
               Export Report
             </button>
           </div>
 
           <div className="w-full overflow-x-auto">
             <table className="w-full text-left min-w-[1000px]">
-              <thead className="text-[12px] font-black text-gray-400 uppercase tracking-[0.2em] border-b border-gray-50">
+              <thead className="text-[13px] font-black text-gray-400 uppercase tracking-[0.3em] border-b-2 border-gray-50">
                 <tr>
                   <th className="pb-8 pl-6">Crop Type</th>
                   <th className="pb-8">Harvest Date</th>
                   <th className="pb-8">Total Yield</th>
-                  <th className="pb-8">Status</th>
+                  <th className="pb-8 text-right pr-6">Status</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
@@ -127,8 +164,8 @@ const FarmProfile = () => {
             </table>
           </div>
           
-          <button className="mt-12 mx-auto flex items-center gap-3 text-[#22C55E] font-black text-lg hover:translate-x-2 transition-transform">
-            View All History <ChevronRight size={24} />
+          <button className="mt-12 mx-auto flex items-center gap-4 text-[#22C55E] font-black text-xl hover:translate-x-3 transition-transform group">
+            View All History <ChevronRight size={28} className="group-hover:translate-x-1" />
           </button>
         </div>
       </main>
@@ -139,38 +176,38 @@ const FarmProfile = () => {
 /* REUSABLE HELPERS */
 
 const FileItem = ({ name, detail }) => (
-  <div className="flex items-center gap-5 p-5 border border-gray-50 rounded-[28px] hover:bg-gray-50 transition-all group">
-    <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-red-500 shadow-sm border border-gray-100">
-      <FileText size={28} />
+  <div className="flex items-center gap-6 p-6 border-2 border-gray-50 rounded-[30px] hover:bg-gray-50 hover:border-green-100 transition-all group">
+    <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-red-500 shadow-sm border border-gray-100 group-hover:scale-110 transition-transform">
+      <FileText size={32} />
     </div>
     <div className="flex-1">
-      <p className="font-black text-gray-900 text-base">{name}</p>
-      <p className="text-xs font-bold text-gray-400">{detail}</p>
+      <p className="font-black text-gray-900 text-xl">{name}</p>
+      <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">{detail}</p>
     </div>
-    <button className="p-3 text-gray-200 hover:text-red-500 transition-colors">
-      <Trash2 size={24} />
+    <button className="p-4 text-gray-300 hover:text-red-500 hover:bg-red-50 rounded-2xl transition-all">
+      <Trash2 size={28} />
     </button>
   </div>
 );
 
 const TableRow = ({ crop, sub, date, yieldVal, status, icon }) => (
-  <tr className="group hover:bg-[#F0FDF4]/20 transition-all">
-    <td className="py-10 pl-6">
-      <div className="flex items-center gap-6">
-        <div className="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center text-3xl shadow-sm group-hover:scale-110 transition-transform">{icon}</div>
+  <tr className="group hover:bg-[#F0FDF4]/40 transition-all">
+    <td className="py-12 pl-6">
+      <div className="flex items-center gap-8">
+        <div className="w-20 h-20 rounded-full bg-orange-50 flex items-center justify-center text-4xl shadow-sm group-hover:scale-110 transition-transform">{icon}</div>
         <div>
-          <p className="text-xl font-black text-gray-900">{crop}</p>
-          <p className="text-sm font-bold text-gray-400">{sub}</p>
+          <p className="text-2xl font-black text-gray-900">{crop}</p>
+          <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mt-1">{sub}</p>
         </div>
       </div>
     </td>
-    <td className="py-10 text-xl font-bold text-gray-700">{date}</td>
-    <td className="py-10 text-2xl font-black text-gray-900">{yieldVal}</td>
-    <td className="py-10">
-      <span className={`px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest inline-flex items-center gap-2 ${
+    <td className="py-12 text-2xl font-bold text-gray-700">{date}</td>
+    <td className="py-12 text-3xl font-black text-gray-900">{yieldVal}</td>
+    <td className="py-12 text-right pr-6">
+      <span className={`px-8 py-3 rounded-full text-xs font-black uppercase tracking-[0.2em] inline-flex items-center gap-3 shadow-sm ${
         status === 'Sold' ? 'bg-[#F0FDF4] text-[#22C55E]' : 'bg-gray-100 text-gray-500'
       }`}>
-        <span className={`w-2 h-2 rounded-full ${status === 'Sold' ? 'bg-[#22C55E]' : 'bg-gray-400'}`}></span>
+        <span className={`w-3 h-3 rounded-full ${status === 'Sold' ? 'bg-[#22C55E] animate-pulse' : 'bg-gray-400'}`}></span>
         {status}
       </span>
     </td>
