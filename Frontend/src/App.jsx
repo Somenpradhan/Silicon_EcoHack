@@ -1,14 +1,13 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { AlertCard } from './component/alertcard'
-
+import LoginPage from './pages/LoginPage' // Ensure the path matches your file structure
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  // You can keep the count state if you plan to use it later, 
+  // but for a clean login screen, we just return the component.
   return (
-    <AlertCard/>
+    <div className="antialiased">
+      <LoginPage />
+    </div>
   )
 }
 
