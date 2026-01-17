@@ -19,38 +19,15 @@ const FarmProfile = () => {
     <div className="min-h-screen w-full bg-[#F8FBF9] font-sans text-gray-900 overflow-x-hidden">
       
       {/* 1. FULL WIDTH HEADER - Touches both edges */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-100 px-6 lg:px-12 py-5 flex items-center justify-between w-full shadow-sm">
+      
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-[#22C55E] rounded-xl flex items-center justify-center shadow-lg shadow-green-100">
             <span className="text-white text-xl font-bold">🌱</span>
           </div>
           <span className="text-2xl font-black tracking-tighter text-gray-900">AgriSense</span>
         </div>
-        
-        <nav className="hidden xl:flex items-center gap-12 text-sm font-black uppercase tracking-widest">
-          <a href="#" className="text-gray-400 hover:text-[#22C55E] transition-all flex items-center gap-2">
-            <LayoutDashboard size={18} /> Dashboard
-          </a>
-          <a href="#" className="text-[#22C55E] border-b-4 border-[#22C55E] pb-1 flex items-center gap-2">
-            My Farm
-          </a>
-          <a href="#" className="text-gray-400 hover:text-[#22C55E] transition-all flex items-center gap-2">
-            <ShoppingCart size={18} /> Marketplace
-          </a>
-          <a href="#" className="text-gray-400 hover:text-[#22C55E] transition-all flex items-center gap-2">
-            <CloudSun size={18} /> Weather
-          </a>
-        </nav>
+  
 
-        <div className="flex items-center gap-6">
-          <button className="text-gray-400 hover:text-red-500 transition-colors">
-            <LogOut size={22} />
-          </button>
-          <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#22C55E] shadow-md cursor-pointer hover:scale-105 transition-transform">
-            <img src="https://i.imgur.com/8Km9tLL.png" alt="Profile" className="object-cover w-full h-full" />
-          </div>
-        </div>
-      </header>
 
       {/* 2. MAIN CONTENT - Set to w-full to prevent right-side grey gaps */}
       <main className="w-full px-6 lg:px-12 py-10">
