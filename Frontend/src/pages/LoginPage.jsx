@@ -1,14 +1,12 @@
 import React from 'react';
 import { Mail, Lock, ArrowRight, Smartphone } from 'lucide-react';
 
-const LoginPage = () => {
+const LoginPage = ({ onLogin }) => {
   return (
-    // 'w-screen' and 'min-h-screen' ensure the app fills the entire browser window
     <div className="flex flex-col min-h-screen w-screen lg:flex-row font-sans bg-white overflow-hidden">
       
-      {/* Left Section: Hero Image & Branding (Exactly 50% width) */}
+      {/* Left Section: Branding & Image */}
       <div className="relative flex flex-col justify-between w-full p-8 md:p-12 text-white lg:w-1/2 min-h-[450px] lg:min-h-screen">
-        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80" 
@@ -18,7 +16,6 @@ const LoginPage = () => {
           <div className="absolute inset-0 bg-black/20 lg:bg-black/10" />
         </div>
 
-        {/* Content */}
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-12">
             <div className="flex items-center justify-center w-10 h-10 bg-[#22C55E] rounded-full shadow-lg">
@@ -26,19 +23,17 @@ const LoginPage = () => {
             </div>
             <span className="text-3xl font-bold tracking-tight">AgriSense</span>
           </div>
-          
           <div className="max-w-xl">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6">
               Growing a<br />smarter future.
             </h1>
             <p className="text-lg md:text-xl text-gray-100 leading-relaxed opacity-95 max-w-md">
               Access real-time soil data, AI-driven crop advice, and a community 
-              of sustainable farmers. Simple technology for the people who feed the world.
+              of sustainable farmers.
             </p>
           </div>
         </div>
 
-        {/* Footer Navigation */}
         <div className="relative z-10 flex gap-6 text-sm font-medium text-gray-200">
           <a href="#" className="hover:text-white transition-colors">Support</a>
           <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
@@ -46,7 +41,7 @@ const LoginPage = () => {
         </div>
       </div>
 
-      {/* Right Section: Form (Fills remaining 50% width) */}
+      {/* Right Section: Form (BRIGHTENED) */}
       <div className="flex flex-col items-center justify-center w-full lg:w-1/2 bg-white px-6 py-12">
         <div className="w-full max-w-md mx-auto">
           <div className="mb-10">
@@ -54,17 +49,16 @@ const LoginPage = () => {
             <p className="text-[#22C55E] font-semibold text-lg">Please enter your details to access your farm.</p>
           </div>
 
-          {/* Toggle Tab */}
-          <div className="flex p-1.5 mb-8 bg-gray-100 rounded-2xl">
-            <button className="flex-1 py-3 text-sm font-bold text-gray-900 bg-white rounded-xl shadow-sm">
+          {/* BRIGHT TOGGLE: Using bg-gray-100 and white button */}
+          <div className="flex p-1.5 mb-8 bg-gray-50 border border-gray-100 rounded-2xl">
+            <button className="flex-1 py-3 text-sm font-bold text-gray-900 bg-white rounded-xl shadow-sm border border-gray-100">
               Login
             </button>
-            <button className="flex-1 py-3 text-sm font-bold text-gray-500">
+            <button className="flex-1 py-3 text-sm font-bold text-gray-400 hover:text-gray-600 transition-colors">
               Create Account
             </button>
           </div>
 
-          {/* Form */}
           <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
             <div className="space-y-2">
               <label className="block text-sm font-bold text-gray-800">Email Address</label>
@@ -73,7 +67,7 @@ const LoginPage = () => {
                 <input 
                   type="email" 
                   placeholder="farmer@example.com"
-                  className="w-full py-4 pl-12 pr-4 bg-white border border-gray-100 rounded-2xl focus:ring-2 focus:ring-[#22C55E] outline-none shadow-sm"
+                  className="w-full py-4 pl-12 pr-4 bg-gray-50/50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#22C55E] outline-none transition-all"
                 />
               </div>
             </div>
@@ -88,40 +82,43 @@ const LoginPage = () => {
                 <input 
                   type="password" 
                   placeholder="••••••••"
-                  className="w-full py-4 pl-12 pr-4 bg-white border border-gray-100 rounded-2xl focus:ring-2 focus:ring-[#22C55E] outline-none shadow-sm"
+                  className="w-full py-4 pl-12 pr-4 bg-gray-50/50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#22C55E] outline-none transition-all"
                 />
               </div>
             </div>
 
-            <button className="flex items-center justify-center w-full gap-2 py-4 mt-6 font-bold text-white bg-[#22C55E] rounded-2xl hover:bg-[#16a34a] transition-all shadow-lg shadow-green-100">
+            {/* VIBRANT BRIGHT BUTTON */}
+            <button 
+              onClick={onLogin}
+              className="flex items-center justify-center w-full gap-2 py-4 mt-6 font-bold text-white bg-[#22C55E] rounded-2xl hover:bg-[#16a34a] transition-all shadow-lg shadow-green-100 text-lg active:scale-[0.98]"
+            >
               Sign In to AgriSense
               <ArrowRight className="w-5 h-5" />
             </button>
           </form>
 
-          {/* Divider */}
           <div className="relative my-10">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200"></div>
+              <div className="w-full border-t border-gray-100"></div>
             </div>
             <div className="relative flex justify-center text-[10px] font-bold uppercase tracking-widest text-gray-400">
               <span className="px-4 bg-white">Or continue with</span>
             </div>
           </div>
 
-          {/* Social Buttons */}
+          {/* BRIGHT SOCIAL BUTTONS: White backgrounds with thin borders */}
           <div className="grid grid-cols-2 gap-4">
-            <button className="flex items-center justify-center gap-3 py-4 border border-gray-100 rounded-2xl hover:bg-gray-50 shadow-sm font-bold text-gray-800">
-              <span className="w-5 h-5 bg-blue-600 text-white rounded-sm text-[10px] flex items-center justify-center">G</span>
+            <button className="flex items-center justify-center gap-3 py-4 border border-gray-100 bg-white rounded-2xl hover:bg-gray-50 transition-all shadow-sm font-bold text-gray-800">
+              <span className="w-6 h-6 bg-blue-600 text-white rounded-md text-[12px] flex items-center justify-center font-black">G</span>
               Google
             </button>
-            <button className="flex items-center justify-center gap-3 py-4 border border-gray-100 rounded-2xl hover:bg-gray-50 shadow-sm font-bold text-gray-800">
-              <Smartphone className="w-5 h-5" />
+            <button className="flex items-center justify-center gap-3 py-4 border border-gray-100 bg-white rounded-2xl hover:bg-gray-50 transition-all shadow-sm font-bold text-gray-800">
+              <Smartphone className="w-5 h-5 text-gray-800" />
               Phone
             </button>
           </div>
 
-          <p className="mt-10 text-center text-sm text-gray-500 font-medium">
+          <p className="mt-10 text-center text-sm font-medium text-gray-500">
             Need help logging in? <a href="#" className="font-bold text-gray-900 hover:underline">Contact Support</a>
           </p>
         </div>
