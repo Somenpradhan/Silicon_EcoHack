@@ -58,6 +58,8 @@ Farmers invest months of effort, yet a single failure point can turn food into w
 * Build resilient, eco-friendly farming communities
 
 ---
+<img width="2781" height="1285" alt="image" src="https://github.com/user-attachments/assets/1496f9cd-f81a-4896-8a36-6e7ef70be5ef" />
+
 
 ## 🔍 Key Issues Addressed
 
