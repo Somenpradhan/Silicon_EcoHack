@@ -1,7 +1,14 @@
-import React from 'react';
-import { Mail, Lock, ArrowRight, Smartphone } from 'lucide-react';
+import { useState } from 'react';
+import { Mail, Lock, ArrowRight, Smartphone, User } from 'lucide-react';
 
 const LoginPage = ({ onLogin }) => {
+  const [isLogin, setIsLogin] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (onLogin) onLogin();
+  };
+
   return (
     <div className="flex flex-col min-h-screen w-screen lg:flex-row font-sans bg-white overflow-hidden">
       
@@ -41,25 +48,61 @@ const LoginPage = ({ onLogin }) => {
         </div>
       </div>
 
-      {/* Right Section: Form (BRIGHTENED) */}
+      {/* Right Section: Form */}
       <div className="flex flex-col items-center justify-center w-full lg:w-1/2 bg-white px-6 py-12">
         <div className="w-full max-w-md mx-auto">
           <div className="mb-10">
-            <h2 className="text-4xl font-bold text-gray-900 mb-2">Welcome Back</h2>
-            <p className="text-[#22C55E] font-semibold text-lg">Please enter your details to access your farm.</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-2">
+              {isLogin ? 'Welcome Back' : 'Create Account'}
+            </h2>
+            <p className="text-[#22C55E] font-semibold text-lg">
+              {isLogin 
+                ? 'Please enter your details to access your farm.' 
+                : 'Join AgriSense to start your smart farming journey.'}
+            </p>
           </div>
 
-          {/* BRIGHT TOGGLE: Using bg-gray-100 and white button */}
+          {/* Toggle Buttons */}
           <div className="flex p-1.5 mb-8 bg-gray-50 border border-gray-100 rounded-2xl">
-            <button className="flex-1 py-3 text-sm font-bold text-gray-900 bg-white rounded-xl shadow-sm border border-gray-100">
-              Login
-            </button>
-            <button className="flex-1 py-3 text-sm font-bold text-gray-400 hover:text-gray-600 transition-colors">
+            <button 
+              onClick={() => setIsLogin(false)}
+              className={`flex-1 py-3 text-sm font-bold rounded-xl transition-all ${
+                isLogin 
+                  
+                  ? 'text-gray-900 bg-white shadow-sm border border-gray-100' 
+                  : 'text-gray-400 hover:text-gray-600'
+              }`}
+            >
               Create Account
             </button>
+            <button 
+              onClick={() => setIsLogin(true)}
+              className={`flex-1 py-3 text-sm font-bold rounded-xl transition-all ${
+                !isLogin 
+                  ?  'text-gray-400 bg-white shadow-sm border border-gray-100' 
+                  : 'text-gray-400 hover:text-gray-600'
+              }`}
+            >
+              Login
+            </button>
           </div>
 
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+          <div className="space-y-6">
+            {/* Show Full Name field only for signup */}
+            {!isLogin && (
+              <div className="space-y-2">
+                <label className="block text-sm font-bold text-gray-800">Full Name</label>
+                <div className="relative">
+                  <User className="absolute w-5 h-5 text-[#22C55E] -translate-y-1/2 left-4 top-1/2" />
+                  <input 
+                    type="text" 
+                    placeholder="John Doe"
+                    className="w-full py-4 pl-12 pr-4 bg-gray-50/50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#22C55E] outline-none transition-all"
+                  />
+                </div>
+              </div>
+            )}
+
             <div className="space-y-2">
               <label className="block text-sm font-bold text-gray-800">Email Address</label>
               <div className="relative">
@@ -75,27 +118,45 @@ const LoginPage = ({ onLogin }) => {
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <label className="text-sm font-bold text-gray-800">Password</label>
-                <a href="#" className="text-sm font-bold text-[#22C55E] hover:underline">Forgot password?</a>
+                {isLogin && (
+                  <a href="#" className="text-sm font-bold text-[#22C55E] hover:underline">
+                    Forgot password?
+                  </a>
+                )}
               </div>
               <div className="relative">
                 <Lock className="absolute w-5 h-5 text-[#22C55E] -translate-y-1/2 left-4 top-1/2" />
                 <input 
                   type="password" 
-                  placeholder="••••••••"
+                  placeholder="Password"
                   className="w-full py-4 pl-12 pr-4 bg-gray-50/50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#22C55E] outline-none transition-all"
                 />
               </div>
             </div>
 
-            {/* VIBRANT BRIGHT BUTTON */}
+            {/* Show Confirm Password field only for signup */}
+            {!isLogin && (
+              <div className="space-y-2">
+                <label className="block text-sm font-bold text-gray-800">Confirm Password</label>
+                <div className="relative">
+                  <Lock className="absolute w-5 h-5 text-[#22C55E] -translate-y-1/2 left-4 top-1/2" />
+                  <input 
+                    type="password" 
+                    placeholder="Confirm password"
+                    className="w-full py-4 pl-12 pr-4 bg-gray-50/50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#22C55E] outline-none transition-all"
+                  />
+                </div>
+              </div>
+            )}
+
             <button 
-              onClick={onLogin}
+              onClick={handleSubmit}
               className="flex items-center justify-center w-full gap-2 py-4 mt-6 font-bold text-white bg-[#22C55E] rounded-2xl hover:bg-[#16a34a] transition-all shadow-lg shadow-green-100 text-lg active:scale-[0.98]"
             >
-              Sign In to AgriSense
+              {isLogin ? 'Sign In to AgriSense' : 'Create AgriSense Account'}
               <ArrowRight className="w-5 h-5" />
             </button>
-          </form>
+          </div>
 
           <div className="relative my-10">
             <div className="absolute inset-0 flex items-center">
@@ -106,7 +167,6 @@ const LoginPage = ({ onLogin }) => {
             </div>
           </div>
 
-          {/* BRIGHT SOCIAL BUTTONS: White backgrounds with thin borders */}
           <div className="grid grid-cols-2 gap-4">
             <button className="flex items-center justify-center gap-3 py-4 border border-gray-100 bg-white rounded-2xl hover:bg-gray-50 transition-all shadow-sm font-bold text-gray-800">
               <span className="w-6 h-6 bg-blue-600 text-white rounded-md text-[12px] flex items-center justify-center font-black">G</span>
@@ -119,7 +179,7 @@ const LoginPage = ({ onLogin }) => {
           </div>
 
           <p className="mt-10 text-center text-sm font-medium text-gray-500">
-            Need help logging in? <a href="#" className="font-bold text-gray-900 hover:underline">Contact Support</a>
+            Need help? <a href="#" className="font-bold text-gray-900 hover:underline">Contact Support</a>
           </p>
         </div>
       </div>
