@@ -13,7 +13,8 @@ import {
   ChevronRight
 } from 'lucide-react';
 
-const HomePage = () => {
+// Added onNavigate prop to the main component
+const HomePage = ({ onNavigate }) => {
   return (
     <div className="flex h-screen w-screen bg-[#FBFCFB] font-sans text-gray-800 overflow-hidden">
       
@@ -30,15 +31,20 @@ const HomePage = () => {
         </div>
 
         <nav className="flex-1 space-y-1">
-          <NavItem icon={<Home size={18} />} label="Home" active />
-          <NavItem icon={<Fields size={18} />} label="Fields" />
-          <NavItem icon={<Advisory size={18} />} label="Advisory" />
-          <NavItem icon={<Market size={18} />} label="Market" />
+          {/* Connected Sidebar NavItems to onNavigate */}
+          <NavItem icon={<Home size={18} />} label="Home" active onClick={() => onNavigate('home')} />
+          <NavItem icon={<Fields size={18} />} label="Fields" onClick={() => onNavigate('field')} />
+          <NavItem icon={<Advisory size={18} />} label="Advisory" onClick={() => onNavigate('advisory')} />
+          <NavItem icon={<Market size={18} />} label="Market" onClick={() => onNavigate('market')} />
         </nav>
 
         <div className="pt-6 border-t border-gray-50 space-y-4">
           <NavItem icon={<Settings size={18} />} label="Settings" />
-          <div className="bg-gray-50 p-3 rounded-2xl flex items-center gap-3">
+          {/* Connected Profile section */}
+          <div 
+            className="bg-gray-50 p-3 rounded-2xl flex items-center gap-3 cursor-pointer hover:bg-gray-100 transition-colors"
+            onClick={() => onNavigate('profile')}
+          >
             <div className="w-8 h-8 rounded-full border border-white overflow-hidden">
               <img src="https://i.pravatar.cc/100?u=john" alt="User" />
             </div>
@@ -53,7 +59,7 @@ const HomePage = () => {
       {/* 2. AIRY MAIN CONTENT */}
       <main className="flex-1 h-full overflow-y-auto bg-[#FBFCFB] px-12 py-10">
         
-        {/* HEADER SECTION - Reduced Weight */}
+        {/* HEADER SECTION */}
         <div className="flex justify-between items-end mb-10">
           <div>
             <h2 className="text-3xl font-bold text-gray-900 tracking-tight mb-1">Dashboard</h2>
@@ -68,7 +74,7 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* 3. SEASON PROGRESS - Thinner & Cleaner */}
+        {/* 3. SEASON PROGRESS */}
         <div className="bg-white p-8 rounded-[32px] border border-gray-100 mb-8 relative">
           <div className="flex justify-between items-center mb-10 px-2">
             <h3 className="text-lg font-bold text-gray-800">Season Progress</h3>
@@ -94,21 +100,33 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* 4. STATUS CARDS - Smaller & Grid Gap increased */}
+        {/* 4. STATUS CARDS */}
         <div className="grid grid-cols-3 gap-6 mb-8">
           <StatusCard label="12 Acres" sub="Total Land" icon="📏" />
           <StatusCard label="Wheat" sub="Active Crop" icon="🌿" />
           <StatusCard label="Healthy" sub="Soil Status" icon="😊" highlight />
         </div>
 
-        {/* 5. QUICK ACTIONS - Sleeker Cards */}
+        {/* 5. QUICK ACTIONS - Connected Field Details to Analysis */}
         <div className="grid grid-cols-3 gap-6 mb-8">
-          <ActionCard title="Field Details" image="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800" />
-          <ActionCard title="AI Advisory" image="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=800" />
-          <ActionCard title="Marketplace" image="https://images.unsplash.com/photo-1488459711616-23176a3e5b17?auto=format&fit=crop&q=80&w=800" />
+          <ActionCard 
+            title="Field Details" 
+            image="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800" 
+            onClick={() => onNavigate('field')} 
+          />
+          <ActionCard 
+            title="AI Advisory" 
+            image="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=800" 
+            onClick={() => onNavigate('advisory')} 
+          />
+          <ActionCard 
+            title="Marketplace" 
+            image="https://images.unsplash.com/photo-1488459711616-23176a3e5b17?auto=format&fit=crop&q=80&w=800" 
+            onClick={() => onNavigate('market')} 
+          />
         </div>
 
-        {/* 6. HELP BANNER - Lower Profile */}
+        {/* 6. HELP BANNER */}
         <div className="bg-gray-900 p-6 rounded-[28px] flex items-center justify-between shadow-lg shadow-gray-200">
           <div className="flex items-center gap-5">
             <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-2xl">🎧</div>
@@ -126,16 +144,21 @@ const HomePage = () => {
   );
 };
 
-/* --- REUSABLE COMPONENTS (Lighter versions) --- */
+/* --- REUSABLE COMPONENTS --- */
 
-const NavItem = ({ icon, label, active = false }) => (
-  <div className={`flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer transition-all ${
-    active ? 'bg-[#F0FDF4] text-[#22C55E]' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'
-  }`}>
+const NavItem = ({ icon, label, active = false, onClick }) => (
+  <div 
+    onClick={onClick}
+    className={`flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer transition-all ${
+      active ? 'bg-[#F0FDF4] text-[#22C55E]' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'
+    }`}
+  >
     {icon}
     <span className="text-sm font-semibold">{label}</span>
   </div>
 );
+
+// ProgressStep and StatusCard remain the same...
 
 const ProgressStep = ({ label, icon, completed = false, active = false }) => (
   <div className="flex flex-col items-center gap-3 z-10">
@@ -160,8 +183,11 @@ const StatusCard = ({ label, sub, icon, highlight = false }) => (
   </div>
 );
 
-const ActionCard = ({ title, image }) => (
-  <div className="relative h-44 rounded-[24px] overflow-hidden group cursor-pointer shadow-sm border border-gray-100">
+const ActionCard = ({ title, image, onClick }) => (
+  <div 
+    onClick={onClick}
+    className="relative h-44 rounded-[24px] overflow-hidden group cursor-pointer shadow-sm border border-gray-100"
+  >
     <img src={image} alt={title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
     <div className="absolute bottom-5 left-6 right-6 flex justify-between items-center">
