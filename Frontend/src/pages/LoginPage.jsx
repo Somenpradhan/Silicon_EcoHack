@@ -97,7 +97,7 @@ const LoginPage = ({ onLogin }) => {
                   <input 
                     type="text" 
                     placeholder="John Doe"
-                    className="w-full py-4 pl-12 pr-4 bg-gray-50/50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#22C55E] outline-none transition-all"
+                    className="w-full py-4 pl-12 pr-4 text-black bg-gray-50/50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#22C55E] outline-none transition-all"
                   />
                 </div>
               </div>
@@ -110,7 +110,7 @@ const LoginPage = ({ onLogin }) => {
                 <input 
                   type="email" 
                   placeholder="farmer@example.com"
-                  className="w-full py-4 pl-12 pr-4 bg-gray-50/50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#22C55E] outline-none transition-all"
+                  className="w-full py-4 pl-12 pr-4 bg-gray-50/50 border text-black border-gray-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#22C55E] outline-none transition-all"
                 />
               </div>
             </div>
@@ -129,7 +129,7 @@ const LoginPage = ({ onLogin }) => {
                 <input 
                   type="password" 
                   placeholder="Password"
-                  className="w-full py-4 pl-12 pr-4 bg-gray-50/50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#22C55E] outline-none transition-all"
+                  className="w-full py-4 pl-12 pr-4 text-black bg-gray-50/50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#22C55E] outline-none transition-all"
                 />
               </div>
             </div>
@@ -143,7 +143,7 @@ const LoginPage = ({ onLogin }) => {
                   <input 
                     type="password" 
                     placeholder="Confirm password"
-                    className="w-full py-4 pl-12 pr-4 bg-gray-50/50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#22C55E] outline-none transition-all"
+                    className="w-full py-4 pl-12 pr-4 text-black bg-gray-50/50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#22C55E] outline-none transition-all"
                   />
                 </div>
               </div>
