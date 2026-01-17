@@ -1,5 +1,5 @@
 # Silicon_EcoHack
-# 🌱 AgriLoop
+# 🌱 AgriSense
 
 ### Breaking the Agricultural Waste Cycle for Food Security & Sustainable Nutrition
 
