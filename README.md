@@ -212,4 +212,4 @@ This project is released under the **MIT License**.
 
 ---
 
-🌾 *AgriLoop – From Prediction to Preservation, From Waste to Value.*
+🌾 *AgriSense – From Prediction to Preservation, From Waste to Value.*
