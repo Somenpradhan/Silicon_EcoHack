@@ -206,10 +206,4 @@ Built with the vision of empowering farmers, protecting the environment, and sec
 
 ---
 
-## 📜 License
-
-This project is released under the **MIT License**.
-
----
-
 🌾 *AgriSense – From Prediction to Preservation, From Waste to Value.*
